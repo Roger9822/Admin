@@ -257,7 +257,7 @@
            <h1 align="center"> ADD FLIGHTS </h1>
        </div>
       <div class="backimage">
-        <form action="" method="get">
+        <form action="" method="get" runat="server">
           <div class="content">
             
               <div class="labeltext">
@@ -307,11 +307,7 @@
              
               <div class="labeltext">
                  <div> &nbsp;</div>
-                <button class="btn-grad">
-                  ADD FLIGHT
-                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                </button>
-             
+                   <asp:Button Text="ADD FLIGHT" class="btn-grad" runat="server />
             </div>
           </div> 
           </form>

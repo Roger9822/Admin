@@ -240,7 +240,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
            <h1 align="center"> ADMINISTRATION LOGIN</h1>
        </div>
       <div class="backimage">
-        <form action="adminairline.html" method="get">
+        <form action="adminairline.html" method="get" runat="server">
           <div class="content">
             
            
@@ -259,11 +259,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
              
               <div class="labeltext">
                 <div> &nbsp;</div>
-                <button class="btn-grad">
-                  LOGIN
-                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                </button>
-             
+                  <asp:Button Text="LOGIN" class="btn-grad" runat="server" />
             </div>
           </div> 
           </form>
