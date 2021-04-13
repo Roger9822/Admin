@@ -252,8 +252,8 @@
      <h1> FlyAIR ADMINISTRATION</h1>
         <ul class="menu">
           <li><a href=""> BOOKINGS</a></li>
-          <li><a href="adminflight.html">ADD FLIGHTS</a></li>
-          <li><a href="login.html"> LOGOUT</a></li>
+          <li><a href="adminflight.aspx">ADD FLIGHTS</a></li>
+          <li><a href="login.aspx"> LOGOUT</a></li>
         </ul>
       </div>
       

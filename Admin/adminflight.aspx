@@ -248,8 +248,7 @@
      <h1> FlyAIR ADMINISTRATION</h1>
         <ul class="menu">
             <li><a href=""> BOOKINGS</a></li>
-          <li><a href="adminairline.html">ADD AIRLINE</a></li>
-          <li><a href="login.html"> LOGOUT</a></li>
+          <li><a href="adminlogin.aspx"> LOGOUT</a></li>
         </ul>
       </div>
       
@@ -284,7 +283,10 @@
                 <label for="textbox">DESTINATION</label>
                 <input class="textbox" type="text" name="Destination" id="" />
               </div>
-            
+             <div class="labeltext">
+                <label for="textbox">DATE</label>
+                <input class="textbox" type="date" name="date" id="" />
+              </div>
             
             <div class="labeltext">
                 <label for="textbox">ARRIVAL TIME</label>
@@ -303,11 +305,11 @@
                 <input class="textbox" type="text" name="PRICE" id="" />
               </div>
            
-
+            
              
               <div class="labeltext">
                  <div> &nbsp;</div>
-                   <asp:Button Text="ADD FLIGHT" class="btn-grad" runat="server />
+                   <asp:Button Text="ADD FLIGHT" class="btn-grad" runat="server" OnClick="Button1_click"  />
             </div>
           </div> 
           </form>

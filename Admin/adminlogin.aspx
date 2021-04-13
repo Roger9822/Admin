@@ -240,26 +240,27 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
            <h1 align="center"> ADMINISTRATION LOGIN</h1>
        </div>
       <div class="backimage">
-        <form action="adminairline.html" method="get" runat="server">
+        <form action="" method="post" runat="server">
+          
           <div class="content">
             
            
             <div class="labeltext">
-                <label for="textbox">ADMIN ID</label>
-                <input class="textbox" type="text" name="adminid" id="" />
+                <label for="textbox">ADMIN USERNAME</label>
+                <input class="textbox" type="text" name="adminname" id="adminname" />
               </div>
             
 
             <div class="labeltext">
                 <label for="textbox">PASSWORD</label>
-                <input class="textbox" type="text" name="password" id="" />
+                <input class="textbox" type="text" name="password" id="password" />
               </div>
            
 
              
               <div class="labeltext">
                 <div> &nbsp;</div>
-                  <asp:Button Text="LOGIN" class="btn-grad" runat="server" />
+                  <asp:Button Text="LOGIN" class="btn-grad" runat="server" OnClick="Button1_click"  />
             </div>
           </div> 
           </form>
