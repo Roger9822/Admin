@@ -256,21 +256,21 @@
            <h1 align="center"> ADD FLIGHTS </h1>
        </div>
       <div class="backimage">
-        <form action="" method="get" runat="server">
+        <form action="" method="post" runat="server">
           <div class="content">
             
               <div class="labeltext">
                 <label for="textbox">FLIGHT NUMBER</label>
-                <input class="textbox" type="text" name="fliid" id="" />
+                <input class="textbox" type="text" name="flino" id="" />
               </div>
 
               <div class="labeltext">
                 <label for="textbox">SELECT AIRLINE</label>
                 <select class="textbox" name="airname" id="">
                     <option value="0">SELECT AIRLINE</option>
-                    <option value="1">SPICE JET</option>
-                    <option value="2">INDIGO</option>
-                    <option value="3">GO AIR</option>
+                    <option value="SPICE JET">SPICE JET</option>
+                    <option value="INDIGO">INDIGO</option>
+                    <option value="GO AIR">GO AIR</option>
                   </select>
               </div>
 
@@ -281,7 +281,7 @@
 
               <div class="labeltext">
                 <label for="textbox">DESTINATION</label>
-                <input class="textbox" type="text" name="Destination" id="" />
+                <input class="textbox" type="text" name="destination" id="" />
               </div>
              <div class="labeltext">
                 <label for="textbox">DATE</label>
@@ -313,7 +313,8 @@
             </div>
           </div> 
           </form>
-         
+          }
+
         <div class="content2">
           <table class="styled-table">
             <thead>
@@ -329,37 +330,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>223121</td>
-                <td>INDIGO</td>
-                <td>PUNE </td>
-                <td>GOA </td>
-                <td> 8.00 </td>
-                <td> 9.10 </td>
-                <td> 3750 </td>
-                <td><button class="delete-style">REMOVE</button></td>
-              </tr>
-              <tr>
-                <td>101120</td>
-                <td>SPICEJET</td>
-                <td>DELHI </td>
-                <td> GOA </td>
-                <td> 20.00 </td>
-                <td> 2.30 </td>
-                <td> 10300 </td>
-                <td><button class="delete-style">REMOVE</button></td>
-              </tr>
-              <tr>
-                <td>101121</td>
-                <td>INDIGO</td>
-                <td>MUMBAI </td>
-                <td>GOA </td>
-                <td> 14.00 </td>
-                <td> 15.20 </td>
-                <td> 4300 </td>
-                <td><button class="delete-style">REMOVE</button></td>
-              </tr>
-              <!-- and so on... -->
+  
             </tbody>
           </table>
         </div>

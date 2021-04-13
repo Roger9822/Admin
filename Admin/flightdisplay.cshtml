@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+@{
+    var db = Database.Open("flyair");
+    var selectQueryString = "SELECT * FROM flight";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div><table border="1">
+    @foreach (var row in db.Query(selectQueryString))
+    {
+        <tr>
+            <td>@row.fno</td>
+            <td>@row.source</td>
+            <td>@row.destination</td>
+            <td align="right">@row.price</td>
+        </tr>
+    }</table>
+</div>
+</body>
+</html>
