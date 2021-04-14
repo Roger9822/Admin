@@ -291,7 +291,8 @@
           </div>
         </form>
         <div class="content2">
-          <table class="styled-table">
+         
+         <!-- <table class="styled-table">
             <thead>
               <tr>
                 <th>Airline Id</th>
@@ -319,9 +320,9 @@
                 <td>INDIGO</td>
                 <td><button class="delete-style">REMOVE</button></td>
               </tr>
-              <!-- and so on... -->
+            
             </tbody>
-          </table>
+          </table> -->
         </div>
       </div>
     </div>

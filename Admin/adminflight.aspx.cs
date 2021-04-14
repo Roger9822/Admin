@@ -11,7 +11,13 @@ namespace Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;database=flyair;username=root;password=;");
+            conn.Open();
+            string query = "Select * from flight";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            GridView1.DataSource = cmd.ExecuteReader();
+            GridView1.DataBind();
+         
         }
 
         protected void Button1_click(object sender, EventArgs e)
