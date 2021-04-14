@@ -12,6 +12,8 @@ namespace Admin
         protected void Page_Load(object sender, EventArgs e)
         {
 
+       
+
         }
 
         protected void Button1_click(object sender, EventArgs e)
@@ -65,7 +67,35 @@ namespace Admin
                 Response.Write("<script>alert('Data Saved Successfully')</script>");
                 Response.Redirect("adminflight.aspx");
             }
+         
 
+        }
+        public string getWhileLoopData()
+        {
+            string htmlStr = " ";
+            MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;database=flyair;username=root;password=;");
+            conn.Open();
+            string query2 = "Select * from flight";
+            MySqlCommand cmdd2 = new MySqlCommand(query2, conn);
+            MySqlDataReader mydr2 = cmdd2.ExecuteReader();
+
+            while (mydr2.Read())
+            {
+                string flino1 = mydr2.GetString(1);
+                string sairline1 = mydr2.GetString(8);
+                string source1 = mydr2.GetString(2);
+                string destination1 = mydr2.GetString(3);
+                string date1 = mydr2.GetString(6);
+                string dtime1 = mydr2.GetString(4);
+                string atime1 = mydr2.GetString(5);
+                string price1 = mydr2.GetString(7);
+                htmlStr += "<tr><td>" + flino1 + "</td><td>" + sairline1 + "</td><td>" + source1 + "</td><td>" + destination1 + "</td>" +
+                    "<td>" + date1 + "</td><td>" + dtime1 + "</td><td>" + atime1 + "</td><td>" + price1 + "</td><td><button class='delete-style' name='delete' id='delete'> REMOVE</button></td></tr>";
+            }
+            
+
+            conn.Close();
+            return htmlStr;
         }
     }
 }
