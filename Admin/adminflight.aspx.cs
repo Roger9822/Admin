@@ -11,9 +11,8 @@ namespace Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-       
-
+           
+         
         }
 
         protected void Button1_click(object sender, EventArgs e)
