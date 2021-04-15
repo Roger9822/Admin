@@ -287,6 +287,11 @@
                 <label for="textbox">DATE</label>
                 <input class="textbox" type="date" name="date" id="" />
               </div>
+
+              <div class="labeltext">
+                <label for="textbox">DEPARTURE TIME</label>
+                <input class="textbox" type="text" name="dtime" id="" />
+              </div>
             
             <div class="labeltext">
                 <label for="textbox">ARRIVAL TIME</label>
@@ -294,10 +299,7 @@
               </div>
            
            
-            <div class="labeltext">
-                <label for="textbox">DEPARTURE TIME</label>
-                <input class="textbox" type="text" name="dtime" id="" />
-              </div>
+            
             
 
             <div class="labeltext">
@@ -336,9 +338,10 @@
             <thead>
               <tr>
                 <th>FLIGHT Id</th>
-                <th>Airline </th>
+                <th>AIRLINE </th>
                 <th>SOURCE</th>
                 <th>DESTINATION</th>
+                  <th>DATE</th>
                 <th>DEPARTURE TIME</th>
                 <th>ARRIVAL TIME</th>
                 <th>PRICE</th>
@@ -346,8 +349,10 @@
               </tr>
             </thead>
             <tbody>
-  
-            </tbody>
+                
+        <%=getWhileLoopData()%>
+   
+           </tbody>
           </table>
         </div>
       </div>
