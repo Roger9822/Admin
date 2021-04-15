@@ -318,21 +318,7 @@
           
 
         <div class="content2">
-               <form action="" method="post">
-                     <asp:GridView  class="styled-table" ID="GridView1" >
-                        <Columns>
-                             <asp:BoundField DataField="fno" HeaderText="FLIGHT Id" ReadOnly="True" SortExpression="SalesOrderID" />
-                             <asp:BoundField DataField="SalesOrderID" HeaderText="Airline" ReadOnly="True" SortExpression="SalesOrderID" />
-                             <asp:BoundField DataField="SalesOrderID" HeaderText="SOURCE" ReadOnly="True" SortExpression="SalesOrderID" />
-                             <asp:BoundField DataField="SalesOrderID" HeaderText="DESTINATION" ReadOnly="True" SortExpression="SalesOrderID" />
-                             <asp:BoundField DataField="SalesOrderID" HeaderText="DEPARTURE TIME" ReadOnly="True" SortExpression="SalesOrderID" />
-                             <asp:BoundField DataField="SalesOrderID" HeaderText="DESTINATION" ReadOnly="True" SortExpression="SalesOrderID" />
-                             <asp:BoundField DataField="SalesOrderID" HeaderText="ARRIVAL TIME" ReadOnly="True" SortExpression="SalesOrderID" />
-                             <asp:BoundField DataField="SalesOrderID" HeaderText="PRICE" ReadOnly="True" SortExpression="SalesOrderID" />
-                             <asp:BoundField DataField="SalesOrderID" HeaderText="REMOVE" ReadOnly="True" SortExpression="SalesOrderID" />
-                        </Columns>
-                     </asp:GridView>    
-                </form>
+               
 
           <!--<table class="styled-table">
             <thead>
