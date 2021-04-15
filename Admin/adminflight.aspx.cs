@@ -90,12 +90,22 @@ namespace Admin
                 string atime1 = mydr2.GetString(5);
                 string price1 = mydr2.GetString(7);
                 htmlStr += "<tr><td>" + flino1 + "</td><td>" + sairline1 + "</td><td>" + source1 + "</td><td>" + destination1 + "</td>" +
-                    "<td>" + date1 + "</td><td>" + dtime1 + "</td><td>" + atime1 + "</td><td>" + price1 + "</td><td><button class='delete-style' name='delete' id='delete'> REMOVE</button></td></tr>";
+                    "<td>" + date1 + "</td><td>" + dtime1 + "</td><td>" + atime1 + "</td><td>" + price1 + "</td><td><button class='delete-style' name='delete' id='delete' onclick='Button2'> REMOVE</button></td></tr>";
             }
             
 
             conn.Close();
             return htmlStr;
+        }
+        protected void Button2_click()
+        {
+            
+            MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;database=flyair;username=root;password=;");
+            conn.Open();
+            string query2 = "delete * from flight where flino1=flino1";
+            MySqlCommand cmdd2 = new MySqlCommand(query2, conn);
+            MySqlDataReader mydr2 = cmdd2.ExecuteReader();
+            string flino1 = mydr2.GetString(1);
         }
     }
 }
