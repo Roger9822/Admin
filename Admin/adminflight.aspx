@@ -320,7 +320,7 @@
         <div class="content2">
                
 
-          <!--<table class="styled-table">
+          <table class="styled-table">
             <thead>
               <tr>
                 <th>FLIGHT Id</th>
