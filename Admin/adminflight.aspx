@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminflight.aspx.cs" Inherits="Admin.adminflight" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="adminflight.aspx.cs" Inherits="Admin.adminflight" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+  
 
-<!DOCTYPE html>
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head runat="server">
+<html>
+  <head >
     <title>Home Page</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
@@ -253,69 +253,87 @@
       </div>
       
        <div class="headd">
-           <h1 align="center"> ADD FLIGHTS </h1>
+           <h1 align="center"> ADD FLIGHTS </h1><br /><br />
+           <center>
+         <asp:Button Text="ADD FLIGHT" ID="Button1" runat="server" OnClick="Button1_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Button Text="REMOVE FLIGHT" ID="Button2" runat="server" OnClick="Button2_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Button Text="UPDATE FLIGHT" ID="Button3" runat="server" OnClick="Button3_Click" /> </center>
        </div>
+        
       <div class="backimage">
-        <form action="" method="post" runat="server">
+          <asp:MultiView ID="Multiview1" runat="server">
+        <asp:View ID="View1" runat="server"> 
+       
           <div class="content">
             
               <div class="labeltext">
                 <label for="textbox">FLIGHT NUMBER</label>
-                <input class="textbox" type="text" name="flino" id="" />
+                <asp:TextBox runat="server" class="textbox" type="text" name="flino" id="flino1" />
               </div>
 
               <div class="labeltext">
                 <label for="textbox">SELECT AIRLINE</label>
-                <select class="textbox" name="airname" id="">
-                    <option value="0">SELECT AIRLINE</option>
-                    <option value="SPICE JET">SPICE JET</option>
-                    <option value="INDIGO">INDIGO</option>
-                    <option value="GO AIR">GO AIR</option>
-                  </select>
+              <asp:DropDownList ID="DropDownList1" runat="server" name="airname" >  
+            <asp:ListItem Value="0">Select AIRLINE</asp:ListItem>  
+            <asp:ListItem Value="INDIGO">INDIGO </asp:ListItem>  
+            <asp:ListItem Value="SPICEJET">SPICEJET</asp:ListItem>  
+            <asp:ListItem Value="GO AIR">GO AIR</asp:ListItem>   
+        </asp:DropDownList>    
               </div>
 
               <div class="labeltext">
                 <label for="textbox">SOURCE</label>
-                <input  class="textbox" type="text" name="source" id=""  />
+                 <asp:TextBox runat="server"  class="textbox" type="text" name="source" id="source1"  />
               </div>
 
               <div class="labeltext">
                 <label for="textbox">DESTINATION</label>
-                <input class="textbox" type="text" name="destination" id="" />
+                 <asp:TextBox runat="server"  class="textbox" type="text" name="destination" id="destination1" />
               </div>
              <div class="labeltext">
                 <label for="textbox">DATE</label>
-                <input class="textbox" type="date" name="date" id="" />
+                <asp:TextBox runat="server"  class="textbox" type="date" name="date" id="date1" />
               </div>
 
               <div class="labeltext">
                 <label for="textbox">DEPARTURE TIME</label>
-                <input class="textbox" type="text" name="dtime" id="" />
+                <asp:TextBox runat="server"  class="textbox" type="text" name="dtime" id="dtime1" />
               </div>
             
             <div class="labeltext">
                 <label for="textbox">ARRIVAL TIME</label>
-                <input class="textbox" type="text" name="atime" id="" />
+              <asp:TextBox runat="server"  class="textbox" type="text" name="atime" id="atime1" />
               </div>
            
-           
-            
-            
-
             <div class="labeltext">
                 <label for="textbox">PRICE</label>
-                <input class="textbox" type="text" name="PRICE" id="" />
+                 <asp:TextBox runat="server"  class="textbox" type="text" name="PRICE" id="price1" />
               </div>
            
-            
-             
               <div class="labeltext">
                  <div> &nbsp;</div>
-                   <asp:Button Text="ADD FLIGHT" class="btn-grad" runat="server" OnClick="Button1_click"  />
+                   <asp:Button Text="ADD FLIGHT" ID="Button4" class="btn-grad" runat="server" OnClick="Button4_click"  />
             </div>
           </div> 
-          </form>
           
+           </asp:View>
+               <asp:View ID="View2" runat="server"> 
+       
+          <div class="content">
+            
+              <div class="labeltext">
+                <label for="textbox">FLIGHT NUMBER</label>
+                 <asp:TextBox runat="server" class="textbox" type="text" name="flino" ID="TextBox1" />
+              </div>  
+           
+              <div class="labeltext">
+                 <div> &nbsp;</div>
+                   <asp:Button Text="REMOVE FLIGHT" ID="Button5" class="btn-grad" runat="server" OnClick="Button5_click"  />
+            </div>
+          </div> 
+          
+           </asp:View>
+    </asp:MultiView>
 
         <div class="content2">
                
@@ -331,12 +349,11 @@
                 <th>DEPARTURE TIME</th>
                 <th>ARRIVAL TIME</th>
                 <th>PRICE</th>
-                <th> REMOVE </th>
               </tr>
             </thead>
             <tbody>
                 
-         <%=getWhileLoopData()%>
+        <%=getWhileLoopData()%>
    
            </tbody>
           </table>
@@ -345,3 +362,4 @@
     </div>
   </body>
 </html>
+</asp:Content>

@@ -11,21 +11,21 @@ namespace Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-         
+
+
         }
 
-        protected void Button1_click(object sender, EventArgs e)
+        protected void Button4_click(object sender, EventArgs e)
         {
-            string flino = Request.Form.Get("flino");
-            string sairline = Request.Form.Get("airname");
-            string source = Request.Form.Get("source");
-            string destination = Request.Form.Get("destination");
-            string date = Request.Form.Get("date");
-            string dtime = Request.Form.Get("dtime");
-            string atime = Request.Form.Get("atime");
-            string price = Request.Form.Get("price");
-           
+            string flino = flino1.Text;
+            string sairline = DropDownList1.SelectedValue;
+            string source = source1.Text;
+            string destination = destination1.Text;
+            string date = date1.Text;
+            string dtime = dtime1.Text;
+            string atime = atime1.Text;
+            string price = price1.Text;
+
 
 
 
@@ -66,7 +66,7 @@ namespace Admin
                 Response.Write("<script>alert('Data Saved Successfully')</script>");
                 Response.Redirect("adminflight.aspx");
             }
-         
+
 
         }
         public string getWhileLoopData()
@@ -89,23 +89,62 @@ namespace Admin
                 string atime1 = mydr2.GetString(5);
                 string price1 = mydr2.GetString(7);
                 htmlStr += "<tr><td>" + flino1 + "</td><td>" + sairline1 + "</td><td>" + source1 + "</td><td>" + destination1 + "</td>" +
-                    "<td>" + date1 + "</td><td>" + dtime1 + "</td><td>" + atime1 + "</td><td>" + price1 + "</td><td><asp:Button runat='server' class='delete-style' name='delete' id='delete' OnClick='Button2_click'> REMOVE</button></td></tr>";
+                    "<td>" + date1 + "</td><td>" + dtime1 + "</td><td>" + atime1 + "</td><td>" + price1 + "</td></tr>";
             }
-            
+
 
             conn.Close();
             return htmlStr;
         }
-        protected void Button2_click()
+
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Write("hi hi hi hi ");
-            
-          /*  MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;database=flyair;username=root;password=;");
+            Multiview1.ActiveViewIndex = 0;
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Multiview1.ActiveViewIndex = 1;
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Multiview1.ActiveViewIndex = 2;
+        }
+
+        protected void Button5_click(object sender, EventArgs e)
+        {
+            string flino = TextBox1.Text;
+            MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;database=flyair;username=root;password=;");
             conn.Open();
-            string query2 = "delete * from flight where flino1=flino1";
-            MySqlCommand cmdd2 = new MySqlCommand(query2, conn);
-            MySqlDataReader mydr2 = cmdd2.ExecuteReader();
-            string flino1 = mydr2.GetString(1);*/
+            string query = "Select fno from flight";
+            MySqlCommand cmdd = new MySqlCommand(query, conn);
+            MySqlDataReader mydr = cmdd.ExecuteReader();
+            int flight_flag = 0;
+            while (mydr.Read())
+            {
+                if (flino.Equals(mydr["fno"].ToString()))
+                {
+                    flight_flag = 1;
+                }
+            }
+
+            if (flight_flag == 0)
+            {
+                Response.Write("<script>alert('Flight does not exist')</script>");
+            }
+            else
+            {  //string mycon = "Server=localhost;Database=test1;Uid=root;Password= ;";
+                MySqlConnection con = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;");
+                MySqlCommand cmd = new MySqlCommand("DELETE from flyair.flight where fno=" + flino + " ", con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                Response.Write("<script>alert('Data Deleted Successfully')</script>");
+                Response.Redirect("adminflight.aspx");
+            }
+
+
         }
     }
 }
