@@ -11,21 +11,21 @@ namespace Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-         
+
+
         }
 
         protected void Button4_click(object sender, EventArgs e)
         {
             string flino = flino1.Text;
-            string sairline = DropDownList1.SelectedValue;
-            string source = source1.Text;
-            string destination = destination1.Text;
+            string sairline = airline1.SelectedValue;
+            string source = source1.SelectedValue;
+            string destination = destination1.SelectedValue;
             string date = date1.Text;
             string dtime = dtime1.Text;
-            string atime =atime1.Text;
+            string atime = atime1.Text;
             string price = price1.Text;
-           
+
 
 
 
@@ -47,6 +47,11 @@ namespace Admin
             {
                 Response.Write("<script>alert('Flight already exist')</script>");
             }
+            else if (source1.SelectedItem.Value == destination1.SelectedItem.Value)
+            {
+                Response.Write("<script language='javascript'>window.alert('Destination cannot be same');</script>");
+            }
+
             else
             {  //string mycon = "Server=localhost;Database=test1;Uid=root;Password= ;";
                 MySqlConnection con = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;");
@@ -66,7 +71,7 @@ namespace Admin
                 Response.Write("<script>alert('Data Saved Successfully')</script>");
                 Response.Redirect("adminflight.aspx");
             }
-         
+
 
         }
         public string getWhileLoopData()
@@ -91,7 +96,7 @@ namespace Admin
                 htmlStr += "<tr><td>" + flino1 + "</td><td>" + sairline1 + "</td><td>" + source1 + "</td><td>" + destination1 + "</td>" +
                     "<td>" + date1 + "</td><td>" + dtime1 + "</td><td>" + atime1 + "</td><td>" + price1 + "</td></tr>";
             }
-            
+
 
             conn.Close();
             return htmlStr;
@@ -99,13 +104,88 @@ namespace Admin
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
-          /*  MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;database=flyair;username=root;password=;");
+            Multiview1.ActiveViewIndex = 0;
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Multiview1.ActiveViewIndex = 1;
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Multiview1.ActiveViewIndex = 2;
+        }
+
+        protected void Button5_click(object sender, EventArgs e)
+        {
+            string flino = TextBox1.Text;
+            MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;database=flyair;username=root;password=;");
             conn.Open();
-            string query2 = "delete * from flight where flino1=flino1";
-            MySqlCommand cmdd2 = new MySqlCommand(query2, conn);
-            MySqlDataReader mydr2 = cmdd2.ExecuteReader();
-            string flino1 = mydr2.GetString(1);
+            string query = "Select fno from flight";
+            MySqlCommand cmdd = new MySqlCommand(query, conn);
+            MySqlDataReader mydr = cmdd.ExecuteReader();
+            int flight_flag = 0;
+            while (mydr.Read())
+            {
+                if (flino.Equals(mydr["fno"].ToString()))
+                {
+                    flight_flag = 1;
+                }
+            }
+
+            if (flight_flag == 0)
+            {
+                Response.Write("<script>alert('Flight does not exist')</script>");
+            }
+            else
+            {  //string mycon = "Server=localhost;Database=test1;Uid=root;Password= ;";
+                MySqlConnection con = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;");
+                MySqlCommand cmd = new MySqlCommand("DELETE from flyair.flight where fno=" + flino + " ", con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                Response.Write("<script>alert('Data Deleted Successfully')</script>");
+                Response.Redirect("adminflight.aspx");
+            }
+
+
+        }
+
+        protected void Button6_click(object sender, EventArgs e)
+        {
+            string flino = TextBox2.Text;
+            string dtime = TextBox3.Text;
+            string atime = TextBox4.Text;
+            string price = TextBox5.Text;
+            MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;database=flyair;username=root;password=;");
+            conn.Open();
+            string query = "Select fno from flight";
+            MySqlCommand cmdd = new MySqlCommand(query, conn);
+            MySqlDataReader mydr = cmdd.ExecuteReader();
+            int flight_flag = 0;
+            while (mydr.Read())
+            {
+                if (flino.Equals(mydr["fno"].ToString()))
+                {
+                    flight_flag = 1;
+                }
+            }
+
+            if (flight_flag == 0)
+            {
+                Response.Write("<script>alert('Flight does not exist to update')</script>");
+            }
+            else
+            {  //string mycon = "Server=localhost;Database=test1;Uid=root;Password= ;";
+                MySqlConnection con = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;");
+                MySqlCommand cmd = new MySqlCommand("UPDATE flyair.flight SET departuretime =' " + dtime + " ', arrivaltime =' " + atime + " ', price =' " + price + " ' where fno = " + flino + " ", con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                Response.Write("<script>alert('Data Updated Successfully')</script>");
+                Response.Redirect("adminflight.aspx");
+            }
         }
     }
 }
