@@ -101,16 +101,91 @@ namespace Admin
             conn.Close();
             return htmlStr;
         }
-        protected void Button2_click()
+
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Write("hi hi hi hi ");
-            
-          /*  MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;database=flyair;username=root;password=;");
+            Multiview1.ActiveViewIndex = 0;
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Multiview1.ActiveViewIndex = 1;
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Multiview1.ActiveViewIndex = 2;
+        }
+
+        protected void Button5_click(object sender, EventArgs e)
+        {
+            string flino = TextBox1.Text;
+            MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;database=flyair;username=root;password=;");
             conn.Open();
-            string query2 = "delete * from flight where flino1=flino1";
-            MySqlCommand cmdd2 = new MySqlCommand(query2, conn);
-            MySqlDataReader mydr2 = cmdd2.ExecuteReader();
-            string flino1 = mydr2.GetString(1);*/
+            string query = "Select fno from flight";
+            MySqlCommand cmdd = new MySqlCommand(query, conn);
+            MySqlDataReader mydr = cmdd.ExecuteReader();
+            int flight_flag = 0;
+            while (mydr.Read())
+            {
+                if (flino.Equals(mydr["fno"].ToString()))
+                {
+                    flight_flag = 1;
+                }
+            }
+
+            if (flight_flag == 0)
+            {
+                Response.Write("<script>alert('Flight does not exist')</script>");
+            }
+            else
+            {  //string mycon = "Server=localhost;Database=test1;Uid=root;Password= ;";
+                MySqlConnection con = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;");
+                MySqlCommand cmd = new MySqlCommand("DELETE from flyair.flight where fno=" + flino + " ", con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                Response.Write("<script>alert('Data Deleted Successfully')</script>");
+                Response.Redirect("adminflight.aspx");
+            }
+
+
+        }
+
+        protected void Button6_click(object sender, EventArgs e)
+        {
+            string flino = TextBox2.Text;
+            string dtime = TextBox3.Text;
+            string atime = TextBox4.Text;
+            string price = TextBox5.Text;
+            MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;database=flyair;username=root;password=;");
+            conn.Open();
+            string query = "Select fno from flight";
+            MySqlCommand cmdd = new MySqlCommand(query, conn);
+            MySqlDataReader mydr = cmdd.ExecuteReader();
+            int flight_flag = 0;
+            while (mydr.Read())
+            {
+                if (flino.Equals(mydr["fno"].ToString()))
+                {
+                    flight_flag = 1;
+                }
+            }
+
+            if (flight_flag == 0)
+            {
+                Response.Write("<script>alert('Flight does not exist to update')</script>");
+            }
+            else
+            {  //string mycon = "Server=localhost;Database=test1;Uid=root;Password= ;";
+                MySqlConnection con = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;");
+                MySqlCommand cmd = new MySqlCommand("UPDATE flyair.flight SET departuretime =' " + dtime + " ', arrivaltime =' " + atime + " ', price =' " + price + " ' where fno = " + flino + " ", con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                Response.Write("<script>alert('Data Updated Successfully')</script>");
+                Response.Redirect("adminflight.aspx");
+            }
         }
     }
 }
