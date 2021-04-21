@@ -1,11 +1,29 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="adminflight.aspx.cs" Inherits="Admin.adminflight" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-  
+﻿
 
 
-<html>
-  <head >
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head runat="server">
     <title>Home Page</title>
+       <link
+      href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"
+      rel="Stylesheet"
+      type="text/css"
+    />
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-1.7.2.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"
+    ></script>
+    <script language="javascript">
+        $(document).ready(function () {
+            $("#date1").datepicker({
+                minDate: 0,
+            });
+        });
+    </script>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
       rel="stylesheet"
@@ -176,8 +194,10 @@
         color: #ffffff;
         text-align: left;
       }
+      
       .styled-table th,
       .styled-table td {
+           text-align: center;
         padding: 12px 15px;
       }
       .styled-table tbody tr {
@@ -241,6 +261,7 @@
         );
       }
     </style>
+
   </head>
   <body>
     <div class="fl">
@@ -273,23 +294,27 @@
 
               <div class="labeltext">
                 <label for="textbox">SELECT AIRLINE</label>
-              <asp:DropDownList ID="DropDownList1" runat="server" name="airname" >  
-            <asp:ListItem Value="0">Select AIRLINE</asp:ListItem>  
-            <asp:ListItem Value="INDIGO">INDIGO </asp:ListItem>  
-            <asp:ListItem Value="SPICEJET">SPICEJET</asp:ListItem>  
-            <asp:ListItem Value="GO AIR">GO AIR</asp:ListItem>   
-        </asp:DropDownList>    
+                <select class="textbox" name="airname" id="">
+                    <option value="0">SELECT AIRLINE</option>
+                    <option value="SPICE JET">SPICE JET</option>
+                    <option value="INDIGO">INDIGO</option>
+                    <option value="GO AIR">GO AIR</option>
+                  </select>
               </div>
 
-              <div class="labeltext">
+                <div class="labeltext">
                 <label for="textbox">SOURCE</label>
-                 <asp:TextBox runat="server"  class="textbox" type="text" name="source" id="source1"  />
+                <input  class="textbox" type="text" name="source" id=""  />
               </div>
-
-              <div class="labeltext">
+            
+              
+                <div class="labeltext">
                 <label for="textbox">DESTINATION</label>
-                 <asp:TextBox runat="server"  class="textbox" type="text" name="destination" id="destination1" />
+                <input class="textbox" type="text" name="destination" id="" />
               </div>
+           
+            
+
              <div class="labeltext">
                 <label for="textbox">DATE</label>
                 <asp:TextBox runat="server"  class="textbox" type="date" name="date" id="date1" />
@@ -297,38 +322,28 @@
 
               <div class="labeltext">
                 <label for="textbox">DEPARTURE TIME</label>
-                <asp:TextBox runat="server"  class="textbox" type="text" name="dtime" id="dtime1" />
+                <input class="textbox" type="text" name="dtime" id="" />
               </div>
             
             <div class="labeltext">
                 <label for="textbox">ARRIVAL TIME</label>
-              <asp:TextBox runat="server"  class="textbox" type="text" name="atime" id="atime1" />
+                <input class="textbox" type="text" name="atime" id="" />
               </div>
            
+           
+            
+            
+
             <div class="labeltext">
                 <label for="textbox">PRICE</label>
-                 <asp:TextBox runat="server"  class="textbox" type="text" name="PRICE" id="price1" />
+                <input class="textbox" type="text" name="PRICE" id="" />
               </div>
            
-              <div class="labeltext">
-                 <div> &nbsp;</div>
-                   <asp:Button Text="ADD FLIGHT" ID="Button4" class="btn-grad" runat="server" OnClick="Button4_click"  />
-            </div>
-          </div> 
-          
-           </asp:View>
-               <asp:View ID="View2" runat="server"> 
-       
-          <div class="content">
             
-              <div class="labeltext">
-                <label for="textbox">FLIGHT NUMBER</label>
-                 <asp:TextBox runat="server" class="textbox" type="text" name="flino" ID="TextBox1" />
-              </div>  
-           
+             
               <div class="labeltext">
                  <div> &nbsp;</div>
-                   <asp:Button Text="REMOVE FLIGHT" ID="Button5" class="btn-grad" runat="server" OnClick="Button5_click"  />
+                   <asp:Button Text="ADD FLIGHT" class="btn-grad" runat="server" OnClick="Button1_click"  />
             </div>
           </div> 
           
@@ -341,7 +356,7 @@
           <table class="styled-table">
             <thead>
               <tr>
-                <th>FLIGHT Id</th>
+                <th>FLIGHT NUMBER</th>
                 <th>AIRLINE </th>
                 <th>SOURCE</th>
                 <th>DESTINATION</th>
@@ -362,4 +377,3 @@
     </div>
   </body>
 </html>
-</asp:Content>
