@@ -6,26 +6,19 @@
 <html>
   <head >
     <title>Home Page</title>
-       <link
-      href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"
-      rel="Stylesheet"
-      type="text/css"
-    />
-    <script
-      type="text/javascript"
-      src="http://code.jquery.com/jquery-1.7.2.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"
-    ></script>
-    <script language="javascript">
-        $(document).ready(function () {
-            $("#date1").datepicker({
-                minDate: 0,
+    
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                var today = new Date();
+                var month = ('0' + (today.getMonth() + 1)).slice(-2);
+                var day = ('0' + today.getDate()).slice(-2);
+                var year = today.getFullYear();
+                var date = year + '-' + month + '-' + day;
+                $('[id*=date1]').attr('min', date);
             });
-        });
-    </script>
+        </script>
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
       rel="stylesheet"
